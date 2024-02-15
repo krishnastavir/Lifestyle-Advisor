@@ -22,15 +22,11 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         if [ -f "keypair.pem" ]; then chmod 600 "keypair.pem"; fi
 
-    - name: Initialize Git Repository (if needed)
-      uses: appleboy/ssh-action@master
-      with:
-        host: ec2-100-24-47-104.compute-1.amazonaws.com
-        port: 22
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          if [ ! -d ".git" ]; then git init; fi
+    - name: Debugging
+      run: |
+        ls -la
+        pwd
+        git remote -v
 
     - name: Update code on EC2
       uses: appleboy/ssh-action@master
@@ -40,4 +36,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
+          cd /lifestyle
           git pull origin main
