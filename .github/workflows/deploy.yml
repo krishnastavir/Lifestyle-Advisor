@@ -31,10 +31,9 @@ jobs:
     - name: Update code on EC2
       uses: appleboy/ssh-action@master
       with:
-        host: ec2-100-24-47-104.compute-1.amazonaws.com
+        host: ec2-18-212-81-195.compute-1.amazonaws.com
         port: 22
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           git pull origin main
-          
