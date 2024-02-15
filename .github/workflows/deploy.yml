@@ -23,5 +23,12 @@ jobs:
         if [ -f "keypair.pem" ]; then chmod 600 "keypair.pem"; fi
 
     - name: Update code on EC2
-      run: |
-        ssh -o StrictHostKeyChecking=no -i "keypair.pem" ubuntu@ec2-100-24-47-104.compute-1.amazonaws.com "cd /lifestyle && git pull origin main"
+      uses: appleboy/ssh-action@master
+      with:
+        host: ec2-100-24-47-104.compute-1.amazonaws.com
+        port: 22
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          cd /lifestyle
+          git pull origin main
