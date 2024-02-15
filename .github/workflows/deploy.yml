@@ -24,4 +24,4 @@ jobs:
 
     - name: Update code on EC2
       run: |
-        ssh -i "keypair.pem" ubuntu@ec2-100-24-47-104.compute-1.amazonaws.com "cd /lifestyle && git pull origin main"
+        ssh -o StrictHostKeyChecking=no -i "keypair.pem" ubuntu@ec2-100-24-47-104.compute-1.amazonaws.com "cd /lifestyle && git pull origin main"
