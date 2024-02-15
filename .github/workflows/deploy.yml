@@ -18,4 +18,4 @@ jobs:
 
     - name: Update code on EC2
       run: |
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@your-ec2-instance-ip "cd /path/to/healthgpt && git pull origin main"
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@100.24.47.104 "cd /lifestyle && git pull origin main"
