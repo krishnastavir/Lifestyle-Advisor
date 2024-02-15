@@ -30,7 +30,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          cd /lifestyle
           if [ ! -d ".git" ]; then git init; fi
 
     - name: Update code on EC2
@@ -41,5 +40,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          cd /lifestyle
           git pull origin main
